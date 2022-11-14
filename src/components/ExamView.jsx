@@ -5,13 +5,14 @@ import Col from 'react-bootstrap/Col';
 
 export default function ExamView() {
   return (
-    <Container fluid='md'>
+    <Container fluid="md">
       <Row>
         <Col xm>
           <ExamListCard
             title="CHEM-504"
             description="chemistry exam"
             subject="Chemistry"
+            link="/exam/ok"
           />
         </Col>
         <Col xm>

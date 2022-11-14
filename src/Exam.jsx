@@ -7,14 +7,14 @@ const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 function Items({ currentItems }) {
   return (
-    <>
+    <React.Fragment>
       {currentItems &&
         currentItems.map((item) => (
           <div>
             <QuestionPage subjectName="Humanities" questionNum={item} />
           </div>
         ))}
-    </>
+    </React.Fragment>
   );
 }
 
@@ -47,11 +47,14 @@ export default function Exam({ itemsPerPage }) {
     <div className="container">
       <div className="row p-3">
         <Items currentItems={currentItems} />
-        <div className="flex-wrap" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          scale: '79%'
-        }}>
+        <div
+          className="flex-wrap"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            scale: '79%',
+          }}
+        >
           <ReactPaginate
             nextLabel=">"
             onPageChange={handlePageClick}

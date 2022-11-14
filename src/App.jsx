@@ -11,8 +11,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<ExamView />} />
-        <Route path="/exams/:id" element={<QuestionPage />} />
-        <Route path="/exam/" element={<Exam itemsPerPage={1} />} />
+        <Route path="/exam/:id" element={<Exam itemsPerPage={1} />} />
       </Routes>
     </>
   );

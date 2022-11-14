@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function ExamListCard({ subject, title, description }) {
+function ExamListCard({ subject, title, description, link }) {
   return (
     <div>
       <Card style={{
@@ -12,7 +12,7 @@ function ExamListCard({ subject, title, description }) {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{description}</Card.Text>
-          <Button size="sm" variant="primary">
+          <Button href={link} size="sm" variant="primary">
             Give Exam
           </Button>
         </Card.Body>
