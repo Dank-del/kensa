@@ -6,9 +6,10 @@ import QuestionPage from './components/QuestionPage';
 const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 const data = [
-  'Rishi made me wet',
-  "Misery and dragsama's intense buttsex turned me on",
-  'Mimi seemed like a cute futa',
+  'Ladki tha woh',
+  "Transgender tha woh",
+  'sawada se lafra lene ki khujli hui usko',
+  'emo hone ki bimari ne diya usko period'
 ];
 
 function Items({ currentItems }) {

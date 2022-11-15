@@ -6,6 +6,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 import ReactMarkdown from 'react-markdown';
 
+const data = ['Prathamesh ko period kyu hua'];
+
 export default function QuestionPage({ questionNum, subjectName, options }) {
   return (
     <div>
@@ -24,13 +26,13 @@ export default function QuestionPage({ questionNum, subjectName, options }) {
       >
         <Card.Header as="h5">Question {questionNum}</Card.Header>
         <Card.Body>
-          <Card.Title>Why are you gay?</Card.Title>
+          <Card.Title>{data[questionNum - 1]}</Card.Title>
           <Card.Text>Select one of the following</Card.Text>
           <ListGroup as="ol">
             {options.map((op, index) => (
               <ListGroup.Item as="li">
                 <ReactMarkdown>{op}</ReactMarkdown>
-                <h6>Option {index}</h6>
+                <h6>Option {index + 1}</h6>
               </ListGroup.Item>
             ))}
           </ListGroup>
@@ -45,12 +47,11 @@ export default function QuestionPage({ questionNum, subjectName, options }) {
               <Form.Check
                 inline
                 type="radio"
-                label={index}
+                label={index + 1}
                 name={questionNum}
               />
             ))}
           </Form>
-          <br />
           <Container>
             <Col
               className="g-2"
