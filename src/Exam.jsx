@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import QuestionPage from './QuestionPage';
+import QuestionPage from './components/QuestionPage';
 
 // Example items, to simulate fetching from another resources.
 const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+
+const data = [
+  'Rishi made me wet',
+  "Misery and dragsama's intense buttsex turned me on",
+  'Mimi seemed like a cute futa',
+];
 
 function Items({ currentItems }) {
   return (
@@ -11,7 +17,11 @@ function Items({ currentItems }) {
       {currentItems &&
         currentItems.map((item) => (
           <div>
-            <QuestionPage subjectName="Humanities" questionNum={item} />
+            <QuestionPage
+              subjectName="Humanities"
+              questionNum={item}
+              options={data}
+            />
           </div>
         ))}
     </React.Fragment>

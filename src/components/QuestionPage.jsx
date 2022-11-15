@@ -4,8 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
+import ReactMarkdown from 'react-markdown';
 
-export default function QuestionPage({ questionNum, subjectName }) {
+export default function QuestionPage({ questionNum, subjectName, options }) {
   return (
     <div>
       <h1
@@ -25,13 +26,13 @@ export default function QuestionPage({ questionNum, subjectName }) {
         <Card.Body>
           <Card.Title>Why are you gay?</Card.Title>
           <Card.Text>Select one of the following</Card.Text>
-          <ListGroup as="ol" numbered>
-            <ListGroup.Item as="li">Misery sucked my balls dry</ListGroup.Item>
-            <ListGroup.Item as="li">
-              Mimi said gay people don't have to study
-            </ListGroup.Item>
-            <ListGroup.Item as="li">Rishi bent for me 😩</ListGroup.Item>
-            <ListGroup.Item as="li">Dragsama invited guys to bed</ListGroup.Item>
+          <ListGroup as="ol">
+            {options.map((op, index) => (
+              <ListGroup.Item as="li">
+                <ReactMarkdown>{op}</ReactMarkdown>
+                <h6>Option {index}</h6>
+              </ListGroup.Item>
+            ))}
           </ListGroup>
           <Form
             style={{
@@ -40,10 +41,14 @@ export default function QuestionPage({ questionNum, subjectName }) {
               margin: '2%',
             }}
           >
-            <Form.Check inline type="radio" label="1" name="q1" />
-            <Form.Check inline type="radio" label="2" name="q1" />
-            <Form.Check inline type="radio" label="3" name="q1" />
-            <Form.Check inline type="radio" label="4" name="q1" />
+            {options.map((currElement, index) => (
+              <Form.Check
+                inline
+                type="radio"
+                label={index}
+                name={questionNum}
+              />
+            ))}
           </Form>
           <br />
           <Container>
