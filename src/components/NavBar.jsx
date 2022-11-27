@@ -4,11 +4,21 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Nav from 'react-bootstrap/Nav';
 import React from 'react';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer';
+
 
 export default function NavBar() {
+
+  let pfp = createAvatar(style, {
+    seed: 'sayan@asia.com',
+    dataUri: true,
+    // ... and other options
+  });
+
   return (
     <React.Fragment>
-      <Navbar bg="dark">
+      <Navbar sticky='top' bg="dark">
         <Container>
           <Navbar.Brand href='/'
             style={{
@@ -25,16 +35,16 @@ export default function NavBar() {
               id="dropdown-item-button"
               title="Actions"
             >
-              <Dropdown.Item as="button">Action</Dropdown.Item>
-              <Dropdown.Item as="button">Another action</Dropdown.Item>
+              <Dropdown.Item as="button">Login</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.location.href = "/signup"} as="button">SignUp</Dropdown.Item>
               <Dropdown.Item as="button">Something else</Dropdown.Item>
             </DropdownButton>
           </Nav>
           <img
-            src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+            src={pfp}
             className="rounded-circle"
             style={{
-              width: '40px',
+              width: '50px',
             }}
             alt=""
           />
