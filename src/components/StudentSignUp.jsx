@@ -4,7 +4,24 @@ import { useForm } from "react-hook-form";
 const StudentSignUp = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = async (data) => {
+        data.age = Number(data.age);
+        console.log(import.meta.env.VITE_API_URL);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/students/signup`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                // "Authorization": "Bearer " + localStorage.getItem("token"),
+            },
+            body: JSON.stringify(data),
+        });
+        if (res.status === 200) {
+            alert("Successfully registered");
+        } else {
+            const errMsg = await res.json();
+            alert("Error: " + JSON.stringify(errMsg));
+        }
+    }
 
     return (
         <Fragment>
@@ -32,14 +49,14 @@ const StudentSignUp = () => {
                     <div className="mb-3">
                         <label for="exampleInputAge1" className="form-label">Age</label>
                         <input type="number" className="form-control" id="quantity" name="quantity" min="1" max="50" {...register("age", {
-                                required: true,
-                            })} />
+                            required: true,
+                        })} />
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" {...register("password", {
-                                required: true,
-                            })} />
+                            required: true,
+                        })} />
                     </div>
                     {/* <div className="mb-3 form-check">
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
