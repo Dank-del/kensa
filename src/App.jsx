@@ -14,6 +14,7 @@ function App() {
       <br />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/exams" element={<ExamView />} />
         <Route path="/exam/:id" element={<Exam itemsPerPage={1} />} />
         <Route path="/signup" element={<SignUp />} />

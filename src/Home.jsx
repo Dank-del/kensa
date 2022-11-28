@@ -8,17 +8,22 @@ const Home = () => {
                     id="intro-example"
                     className="p-5 text-center bg-image"
                     style={{
-                        //height: "100vh",
+                        height: "auto",
                         width: "100%",
+                        maxWidth: "100000px",
+                        // backgroundSize: "100%",
                         marginTop: "-1.5rem",
                         backgroundImage: 'url("bg-home.jpg")',
-                        objectFit: "fill",
+                        backgroundRepeat: "no-repeat",
+                        objectFit: "cover",
                     }}
                 >
                     <div className="mask" style={{ 
                         backgroundColor: "rgba(0, 0, 0, 0.7)",
-                        height: "80vh",
-                        padding: "3rem"
+                        //height: "80vh",
+                        padding: "3rem",
+                        maxHeight: "100000px",
+                        height: "auto",
                         }}>
                         <div className="d-flex justify-content-center align-items-center h-100">
                             <div style={{
