@@ -35,7 +35,7 @@ export default function NavBar() {
               id="dropdown-item-button"
               title="Actions"
             >
-              <Dropdown.Item as="button">Login</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.location.href = "/signin"} as="button">Login</Dropdown.Item>
               <Dropdown.Item onClick={() => window.location.href = "/signup"} as="button">SignUp</Dropdown.Item>
               <Dropdown.Item as="button">Something else</Dropdown.Item>
             </DropdownButton>
