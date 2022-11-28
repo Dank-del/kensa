@@ -12,7 +12,7 @@ const Footer = () => {
                         <div className="row">
                             <div className="col-xs-12 col-sm-6 col-md-3">
                                 <div className="widget subscribe no-box">
-                                    <img src="https://i.imgur.com/p5DZiZC.png" width='200px' alt="" />
+                                    <img src="logo-no-background.png" width='200px' alt="" />
                                     <h2>Testing done right.</h2>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 text-center">
-                                <p>Copyright Kensa © 2022. All rights reserved.</p>
+                                <p>Copyright Kensa © 2022. A Project by Sayan Biswas.</p>
                             </div>
                         </div>
                     </div>

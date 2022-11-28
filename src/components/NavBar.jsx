@@ -26,7 +26,7 @@ export default function NavBar() {
               fontFamily: '"Gill Sans", sans-serif',
             }}
           >
-            <img src="https://i.imgur.com/p5DZiZC.png" width='80px' alt=""/>
+            <img src="logo-no-background.png" width='80px' alt=""/>
           </Navbar.Brand>
           <Nav className="me-auto">
             <DropdownButton
