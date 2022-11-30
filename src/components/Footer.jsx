@@ -59,7 +59,7 @@ const Footer = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12 text-center">
-                                <p>Copyright Kensa © 2022. A Project by Sayan Biswas.</p>
+                                <p>Copyright Kensa International © 2022. A Project by Sayan Biswas.</p>
                             </div>
                         </div>
                     </div>

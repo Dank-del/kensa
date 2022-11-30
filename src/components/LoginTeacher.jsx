@@ -1,7 +1,9 @@
 import { Fragment } from "react";
+import { useCookies } from "react-cookie";
 import { useForm } from "react-hook-form";
 
 const LoginTeacher = () => {
+    const [, setCookie] = useCookies(['user']);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
         data.age = Number(data.age);
@@ -15,7 +17,15 @@ const LoginTeacher = () => {
             body: JSON.stringify(data),
         });
         if (res.status === 200) {
+            const resData = await res.json();
+            setCookie('token', resData.token, {
+                // path: '/',
+                // httpOnly: true,
+                secure: true,
+                sameSite: 'strict'
+            });
             alert("Successfully logged in");
+
         } else {
             const errMsg = await res.json();
             alert("Error: " + JSON.stringify(errMsg));

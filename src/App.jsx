@@ -6,10 +6,12 @@ import SignUp from './Signup';
 import Login from './Login';
 import Footer from './components/Footer';
 import Home from './Home';
+import { CurrentUserProvider } from './CurrentUserContext';
+import Profile from './Profile';
 
 function App() {
   return (
-    <>
+    <CurrentUserProvider>
       <NavBar />
       <br />
       <Routes>
@@ -19,9 +21,10 @@ function App() {
         <Route path="/exam/:id" element={<Exam itemsPerPage={1} />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
-    </>
+    </CurrentUserProvider>
   );
 }
 

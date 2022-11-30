@@ -1,9 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import LoginTeacher from "./components/LoginTeacher";
 import LoginStudent from "./components/LoginStudent";
 
 const Login = () => {
+    const [user, setUser] = useState(null);
     return (
         <Fragment>
             <div style={{
