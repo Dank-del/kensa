@@ -4,9 +4,7 @@ import "./Footer.css";
 const Footer = () => {
     return (
         <Fragment>
-            <footer style={{
-                // marginTop: "calc(5% + 60px)"
-            }} id="footer" className="footer-1">
+            <footer id="footer" className="bottom footer-1">
                 <div className="main-footer widgets-dark typo-light">
                     <div className="container">
                         <div className="row">

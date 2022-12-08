@@ -52,10 +52,15 @@ export default function NavBar() {
               {!pfp ? <div>
                 <Dropdown.Item onClick={() => window.location.href = "/signin"} as="button">Login</Dropdown.Item>
                 <Dropdown.Item onClick={() => window.location.href = "/signup"} as="button">SignUp</Dropdown.Item>
-              </div> : <Dropdown.Item onClick={() => {
+              </div> : <div>
+              <Dropdown.Item onClick={() => {
                 removeCookie('token');
                 window.location.href = "/signin";
-              }} as="button">Log out</Dropdown.Item>}
+              }} as="button">Log out</Dropdown.Item>
+             {currentUser.teacher && <Dropdown.Item onClick={() => window.location.href = "/createexam"} as='button'>
+              Create Exam
+              </Dropdown.Item>}
+              </div> }
               <Dropdown.Item as="button">Something else</Dropdown.Item>
             </DropdownButton>
           </Nav>

@@ -2,33 +2,36 @@ import ExamListCard from './ExamListCard';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useEffect, useState } from 'react';
+import {LoaderCard} from './Loader';
 
 export default function ExamView() {
+  const [examData, setExamData] = useState(null);
+  useEffect(() => {
+    const onLoad = async () => {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/exams`);
+      const data = await response.json();
+      setExamData(data);
+      console.log(data);
+    }
+    onLoad();
+  }, []);
   return (
     <Container fluid="md">
       <Row>
-        <Col xm>
-          <ExamListCard
-            title="CHEM-504"
-            description="chemistry exam"
-            subject="Chemistry"
-            link="/exam/ok"
-          />
-        </Col>
-        <Col xm>
-          <ExamListCard
-            subject="Physics"
-            title="PHY-301"
-            description="physics exam"
-          />
-        </Col>
-        <Col xm>
-          <ExamListCard
-            description="computer science exam"
-            title="CS-221"
-            subject="Compsci"
-          />
-        </Col>
+        {examData ? examData.exams.map((exam) => {
+          return (
+            <Col xm>
+              <ExamListCard
+                key={exam._id}
+                title={exam.name}
+                description={`Total Marks: ${exam.totalMarks}`}
+                subject={exam.subject}
+                link={`/exam/${exam._id}`}
+              />
+            </Col>
+          )
+        }): <LoaderCard/>}
       </Row>
     </Container>
   );

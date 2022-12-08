@@ -12,7 +12,7 @@ const data = [
   'emo hone ki bimari ne diya usko period'
 ];
 
-function Items({ currentItems }) {
+function Items({ currentItems, examId }) {
   return (
     <React.Fragment>
       {currentItems &&

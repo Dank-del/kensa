@@ -75,7 +75,7 @@ const Profile = () => {
                                                         <h6 className="text-muted f-w-400">{usrData.user.age}</h6>
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <p className="m-b-10 f-w-600">IdentityHash</p>
+                                                        {usrData.user.identityHash && <p className="m-b-10 f-w-600">IdentityHash</p>}
                                                         <h6 className="text-muted f-w-400">{usrData.user.identityHash}</h6>
                                                     </div>
                                                 </div>
