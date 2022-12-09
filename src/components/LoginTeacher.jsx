@@ -25,6 +25,7 @@ const LoginTeacher = () => {
                 sameSite: 'strict'
             });
             alert("Successfully logged in");
+            window.location.href = "/profile";
 
         } else {
             const errMsg = await res.json();

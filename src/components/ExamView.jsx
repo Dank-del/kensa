@@ -27,7 +27,7 @@ export default function ExamView() {
                 title={exam.name}
                 description={`Total Marks: ${exam.totalMarks}`}
                 subject={exam.subject}
-                link={`/exam/${exam._id}`}
+                link={`/examview/${exam._id}`}
               />
             </Col>
           )

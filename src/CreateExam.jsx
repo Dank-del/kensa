@@ -1,6 +1,6 @@
-import ErrorResponse from "./components/ErrorResponse";
+import ZodErrorResponse from "./components/ZodErrorResponse";
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
 import './CreateExam.css';
 
@@ -11,7 +11,7 @@ export default function CreateExam() {
     const [formData, setFormData] = useState({
         examName: '',
         subject: '',
-        timeUntilExam: '',
+        date: Date(),
         totalMarks: '',
         passingMarks: '',
         duration: ''
@@ -29,6 +29,15 @@ export default function CreateExam() {
     // function to handle form submission
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const postBody = JSON.stringify({
+            name: formData.examName,
+            subject: formData.subject,
+            date: new Date(formData.date),
+            totalMarks: Number(formData.totalMarks),
+            passingMarks: Number(formData.passingMarks),
+            duration: Number(formData.duration)
+        })
+        console.log(postBody);
         // TODO: Submit form data to server or perform other actions
         const res = await fetch(`${import.meta.env.VITE_API_URL}/exams/create`, {
             method: "POST",
@@ -36,14 +45,7 @@ export default function CreateExam() {
                 "Content-Type": "application/json",
                 "authorization": "Bearer " + cookies["token"],
             },
-            body: JSON.stringify({
-                name: formData.examName,
-                subject: formData.subject,
-                afterMinutes: Number(formData.timeUntilExam),
-                totalMarks: Number(formData.totalMarks),
-                passingMarks: Number(formData.passingMarks),
-                duration: Number(formData.duration)
-            })
+            body: postBody
         })
         if (res.status === 200) {
             const jsn = await res.json()
@@ -53,9 +55,15 @@ export default function CreateExam() {
             console.log(jsn)
             if (!jsn[0].errors){
                 alert("Exam creation failed due to: " + JSON.stringify(jsn));
+                setErrAlert(
+                    <Alert>
+                        <Alert.Heading>Exam creation failed</Alert.Heading>
+                        <p>{jsn.message}</p>
+                    </Alert>
+                )
                 return
             }
-            setErrAlert(<ErrorResponse error={jsn[0].errors}/>)
+            setErrAlert(<ZodErrorResponse error={jsn[0].errors}/>)
             // alert("Exam creation failed due to: " + JSON.stringify(jsn));
         }
         // alert(`Form submitted with the following data: ${JSON.stringify(formData)}`);
@@ -90,13 +98,13 @@ export default function CreateExam() {
                 </Form.Group>
 
                 <Form.Group className='form-group' controlId="formTimeUntilExam">
-                    <Form.Label>Time until exam (in minutes)</Form.Label>
+                    <Form.Label>Exam Date</Form.Label>
                     <Form.Control
                         required
-                        type="number"
+                        type="datetime-local"
                         placeholder="Enter time until exam"
-                        name="timeUntilExam"
-                        value={formData.timeUntilExam}
+                        name="date"
+                        value={formData.date}
                         onChange={handleChange}
                     />
                 </Form.Group>

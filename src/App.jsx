@@ -9,6 +9,7 @@ import Home from './Home';
 import { CurrentUserProvider } from './CurrentUserContext';
 import Profile from './Profile';
 import CreateExam from './CreateExam';
+import ExamViewPage from './ExamViewPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signin" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/createexam" element={<CreateExam/>}/>
+        <Route path="/examview/:id" element={<ExamViewPage/>}/>
       </Routes>
       <Footer />
     </CurrentUserProvider>

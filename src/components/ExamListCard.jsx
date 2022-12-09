@@ -13,7 +13,7 @@ function ExamListCard({ subject, title, description, link }) {
           <Card.Title>{title}</Card.Title>
           <Card.Text>{description}</Card.Text>
           <Button href={link} size="sm" variant="primary">
-            Give Exam
+            View
           </Button>
         </Card.Body>
       </Card>

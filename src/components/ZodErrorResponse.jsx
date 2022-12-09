@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert } from 'react-bootstrap';
 
-const ErrorResponse = ({ error }) => {
+const ZodErrorResponse = ({ error }) => {
     return (
         <Alert variant="danger">
             <h4>There were issues with the provided data:</h4>
@@ -14,4 +14,4 @@ const ErrorResponse = ({ error }) => {
     );
 };
 
-export default ErrorResponse;
+export default ZodErrorResponse;
