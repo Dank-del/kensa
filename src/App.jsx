@@ -10,6 +10,7 @@ import { CurrentUserProvider } from './CurrentUserContext';
 import Profile from './Profile';
 import CreateExam from './CreateExam';
 import ExamViewPage from './ExamViewPage';
+import AddQuestionPage from './AddQuestionPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/createexam" element={<CreateExam/>}/>
         <Route path="/examview/:id" element={<ExamViewPage/>}/>
+        <Route path="/addquestion/:id" element={<AddQuestionPage/>}/>
       </Routes>
       <Footer />
     </CurrentUserProvider>
