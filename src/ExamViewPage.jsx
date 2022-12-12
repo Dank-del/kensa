@@ -119,7 +119,9 @@ const ExamViewPage = () => {
                                 </Card.Text>
                             </div>}
                             {data && data.exam && data.exam.questions && <div>
-                                <h5>Questions:</h5>
+                                <h5>Questions <Button onClick={
+                                    () =>  window.location.href = `/addquestion/${id}`
+                                } size='sm'>Add new</Button> </h5>
                                 {data.exam.questions.map((question) => (
                                     <div style={{
                                         margin: "1rem",

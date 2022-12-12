@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import homeBackground from './assets/bg-home.jpg';
 
 const Home = () => {
     return (
@@ -13,7 +14,7 @@ const Home = () => {
                         maxWidth: "100000px",
                         // backgroundSize: "100%",
                         marginTop: "-1.5rem",
-                        backgroundImage: 'url("bg-home.jpg")',
+                        backgroundImage: `url(${homeBackground})`,
                         backgroundRepeat: "no-repeat",
                         objectFit: "cover",
                     }}

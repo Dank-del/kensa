@@ -8,7 +8,7 @@ import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/adventurer';
 import { useCurrentUser } from '../CurrentUserContext';
 import { useCookies } from 'react-cookie';
-
+import kensaLogo from '/src/assets/logo-no-background.png';
 
 export default function NavBar() {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
@@ -40,7 +40,7 @@ export default function NavBar() {
               fontFamily: '"Gill Sans", sans-serif',
             }}
           >
-            <img src="logo-no-background.png" width='80px' alt="" />
+            <img src={kensaLogo} width='80px' alt="" />
           </Navbar.Brand>
           <Nav className="me-auto">
             <DropdownButton

@@ -7,18 +7,33 @@ import { useParams } from "react-router-dom";
 const ExamForm = () => {
     const [question, setQuestion] = React.useState('');
     const [options, setOptions] = React.useState([]);
+    const [marks, setMarks] = React.useState(0);
     const [alert, setAlert] = React.useState(<div></div>);
     const [cookies] = useCookies(["user"])
     const { id } = useParams();
 
     const onSubmit = async (event) => {
         event.preventDefault();
+        const finalOptions = options.map((option) => {
+            return {
+                data: option.text,
+                isCorrect: option.isCorrect,
+            }
+        })
+
+        const postData = {
+            examId: id,
+            question: question,
+            options: finalOptions,
+            marks: Number(marks),
+        }
         const res = await fetch(`${import.meta.env.VITE_API_URL}/exams/questions/add`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + cookies['token'],
-            }
+            },
+            body: JSON.stringify(postData),
         })
         if (!res.ok) {
             setAlert(
@@ -26,6 +41,8 @@ const ExamForm = () => {
                     Error: {res.status} {res.statusText}
                 </div>
             )
+            const data = await res.json();
+            console.log(data);
             return
         }
         const data = await res.json();
@@ -80,6 +97,15 @@ const ExamForm = () => {
                     placeholder="Enter question"
                     value={question}
                     onChange={handleQuestionChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <h4>Marks:</h4>
+                <FormControl
+                    type="number"
+                    placeholder="Enter marks that should be allotted to this question"
+                    value={marks}
+                    onChange={(event) => setMarks(event.target.value)}
                 />
             </Form.Group>
             <h4 style={{

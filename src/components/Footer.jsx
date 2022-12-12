@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import kensaLogo from '/src/assets/logo-no-background.png';
 import "./Footer.css";
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
                         <div className="row">
                             <div className="col-xs-12 col-sm-6 col-md-3">
                                 <div className="widget subscribe no-box">
-                                    <img src="logo-no-background.png" width='200px' alt="" />
+                                    <img src={kensaLogo} width='200px' alt="" />
                                     <h2>Testing done right.</h2>
                                 </div>
                             </div>
